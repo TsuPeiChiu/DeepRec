@@ -1,0 +1,77 @@
+batch_size: 256
+cartridges:
+  hbond_major:
+    activation:
+    - relu
+    - relu
+    filter_hei:
+    - 2
+    - 4
+    filter_len:
+    - 2
+    - 6
+    l1:
+    - 1.0e-06
+    - 1.0e-06
+    l2:
+    - 0.0
+    - 0.0
+    nb_filter:
+    - 16
+    - 8
+    pool_hei:
+    - 1
+    - 1
+    pool_len:
+    - 1
+    - 1
+  hbond_minor:
+    activation:
+    - relu
+    - relu
+    filter_hei:
+    - 2
+    - 3
+    filter_len:
+    - 2
+    - 6
+    l1:
+    - 1.0e-06
+    - 1.0e-06
+    l2:
+    - 0.0
+    - 0.0
+    nb_filter:
+    - 16
+    - 8
+    pool_hei:
+    - 1
+    - 1
+    pool_len:
+    - 1
+    - 1
+input:
+  test: ./mef2b_comparison/data/r0_r1_mef2b_selex_seq_10mer_100.onestrand.val.h5
+  train: ./mef2b_comparison/data/r0_r1_mef2b_selex_seq_10mer_100.onestrand.train.h5
+  val: ./mef2b_comparison/data/r0_r1_mef2b_selex_seq_10mer_100.onestrand.val.h5
+joint:
+  activation: relu
+  drop_out: 0.0
+  l1: 0.0
+  l2: 0.0
+  nb_hidden: 64
+loss: mse
+nb_epoch: 100
+optimizer: adam
+optimizer_params:
+  lr: 0.001
+output:
+  model_logos: model_logos.png
+  model_logos_results: model_logos_results.tsv
+  model_performances: model_performance.tsv
+  model_selected: model_selected.tsv
+  model_tune: model_tune.tsv
+  path: ./mef2b/output/
+  test_predictions: test_predictions.tsv
+target:
+  activation: sigmoid

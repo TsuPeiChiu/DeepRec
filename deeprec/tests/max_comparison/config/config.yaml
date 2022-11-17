@@ -1,0 +1,45 @@
+input:
+    train: ./max_comparison/data/r0_r1_max_selex_seq_10mer_150.onestrand.train.h5
+    val: ./max_comparison/data/r0_r1_max_selex_seq_10mer_150.onestrand.val.h5
+    test: ./max_comparison/data/r0_r1_max_selex_seq_10mer_150.onestrand.val.h5
+output:
+    path: ./max_comparison/output/
+    model_selected: model_selected.tsv
+    model_tune: model_tune.tsv
+    model_logos: model_logos.png
+    model_logos_results: model_logos_results.tsv
+    model_performances: model_performance.tsv
+    test_predictions: test_predictions.tsv
+optimizer: adam
+optimizer_params:
+    lr: 0.001
+loss: mse
+nb_epoch: 100
+batch_size: 128
+cartridges:
+    hbond_major:
+        nb_filter: [16,16]
+        filter_len: [2,6]
+        filter_hei: [2,4]
+        pool_len: [1,1]
+        pool_hei: [1,1]
+        activation: [relu,relu]
+        l1: [0.000001,0]
+        l2: [0,0]        
+    hbond_minor:
+        nb_filter: [16,16]
+        filter_len: [2,6]
+        filter_hei: [2,3]
+        pool_len: [1,1]
+        pool_hei: [1,1]
+        activation: [relu,relu]
+        l1: [0.000001,0]
+        l2: [0,0]
+joint:
+    nb_hidden: 64
+    activation: relu
+    l1: 0
+    l2: 0
+    drop_out: 0.01    
+target:
+    activation: sigmoid    

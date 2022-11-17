@@ -1,0 +1,46 @@
+input:
+    train: ./max_smile/data/r0_r1_max_smile_seq_10mer_50.onestrand.train.h5
+    val: ./max_smile/data/r0_r1_max_smile_seq_10mer_50.onestrand.val.h5
+    test: ./max_smile/data/r0_r1_max_smile_seq_10mer_50.onestrand.test.h5
+output:
+    path: ./max_smile/output/
+    model_selected: model_selected.tsv
+    model_tune: model_tune.tsv
+    model_logos: model_logos.png
+    model_logos_results: model_logos_results.tsv
+    model_performances: model_performance.tsv
+    test_predictions: test_predictions.tsv
+optimizer: adam
+optimizer_params:
+    lr: 0.001
+loss: mse
+nb_epoch: 100
+batch_size: 256
+cartridges:
+    hbond_major:
+        nb_filter: [16,16]
+        filter_len: [2,6]
+        filter_hei: [2,4]
+        pool_len: [1,1]
+        pool_hei: [1,1]
+        activation: [relu,relu]
+        alpha: [1.0e-06,1.0e-06]
+        l1_ratio: [0,0]        
+    hbond_minor:
+        nb_filter: [16,16]
+        filter_len: [2,6]
+        filter_hei: [2,3]
+        pool_len: [1,1]
+        pool_hei: [1,1]
+        activation: [relu,relu]
+        alpha: [1.0e-06,1.0e-06]
+        l1_ratio: [0,0]
+joint:
+    nb_hidden: 128
+    activation: relu
+    alpha: 0
+    l1_ratio: 0
+    drop_out: 0.01    
+target:
+    activation: sigmoid
+    
