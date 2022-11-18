@@ -16,7 +16,7 @@ DeepRec is a deep-learning-based method that integrates two CNN modules for extr
 
 ## Installation
 
-- Download DeepRec: `git clone https://github.com/TsuPeiChiu/deeprec.git`
+- Download DeepRec: `git clone https://github.com/TsuPeiChiu/DeepRec.git`
 
 - DeepRec is Linux/Unix-based system compatible. We strongly recommend users to use Anaconda to setup the virtual environment to run DeepRec. Install Anaconda [Individual](https://www.anaconda.com/products/individual) Edition first.
 
